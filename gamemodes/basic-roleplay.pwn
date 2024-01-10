@@ -110,3 +110,12 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bod
 
     return true;
 }
+
+public OnPlayerText(playerid, text[])
+{
+    new pText[144];
+    format(pText, sizeof(pText), "%s says: %s", NameRP(playerid), text);
+    SendLocalMessageEx(playerid, COLOR_WHITE, pText, 7.5);
+
+    return false;
+}
