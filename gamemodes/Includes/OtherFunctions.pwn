@@ -111,3 +111,40 @@ GetNearestHouseID(playerid, Float:range = 5.0)
 
     return id;
 }
+
+SendMessage(playerid, const message[], messageType = MESSAGE_TYPE_SERVER)
+{
+    new string[128];
+
+    if (messageType == MESSAGE_TYPE_SERVER)
+    {
+        format(string, sizeof(string), "<Server> {FFFFFF}%s", message);
+        SendClientMessage(playerid, COLOR_SERVER, string);
+    }
+    else if (messageType == MESSAGE_TYPE_ADMIN)
+    {
+        format(string, sizeof(string), "<Admin> {FFFFFF}%s", message);
+        SendClientMessage(playerid, COLOR_ADMIN, string);
+    }
+    else if (messageType == MESSAGE_TYPE_USAGE)
+    {
+        format(string, sizeof(string), "<Usage> {FFFFFF}%s", message);
+        SendClientMessage(playerid, COLOR_LORANGE, string);
+    }
+    else if (messageType == MESSAGE_TYPE_ERROR)
+    {
+        format(string, sizeof(string), "<Error> {FFFFFF}%s", message);
+        SendClientMessage(playerid, COLOR_RED2, string);
+    }
+    else if (messageType == MESSAGE_TYPE_SUCCESS)
+    {
+        format(string, sizeof(string), "<Success> {FFFFFF}%s", message);
+        SendClientMessage(playerid, COLOR_GREEN, string);
+    }
+    else
+    {
+        // todo log error
+    }
+
+    return true;
+}
