@@ -47,7 +47,7 @@ CreateServerHouseData()
 	for(new i = 0; i < MAX_HOUSES; i++) {
 		if(HouseData[i][HouseID] != 0) {
 			HouseData[i][HousePickup] = CreatePickup(1273, 1, HouseData[i][HouseExterior][0], HouseData[i][HouseExterior][1], HouseData[i][HouseExterior][2], 0);
-			HouseData[i][HouseLabel] = Create3DTextLabel(HouseData[i][HouseName], 0xFFFFFFFF, HouseData[i][HouseExterior][0], HouseData[i][HouseExterior][1], HouseData[i][HouseExterior][2], 10.0, 0, 0);
+			HouseData[i][HouseLabel] = Create3DTextLabel(HouseData[i][HouseName], 0xFFFFFFFF, HouseData[i][HouseExterior][0], HouseData[i][HouseExterior][1], HouseData[i][HouseExterior][2], 10.0, 0);
 		}
 	}
 
@@ -148,7 +148,7 @@ Server:SQL_SaveHouseToDatabase(playerid)
 	HouseData[totalHousesCreated][HouseLocked] = 0;
 	
 	HouseData[totalHousesCreated][HousePickup] = CreatePickup(1273, 1, HouseData[totalHousesCreated][HouseExterior][0], HouseData[totalHousesCreated][HouseExterior][1], HouseData[totalHousesCreated][HouseExterior][2], 0);
-	HouseData[totalHousesCreated][HouseLabel] = Create3DTextLabel(HouseData[totalHousesCreated][HouseName], 0xFFFFFFFF, HouseData[totalHousesCreated][HouseExterior][0], HouseData[totalHousesCreated][HouseExterior][1], HouseData[totalHousesCreated][HouseExterior][2], 10.0, 0, 0);
+	HouseData[totalHousesCreated][HouseLabel] = Create3DTextLabel(HouseData[totalHousesCreated][HouseName], 0xFFFFFFFF, HouseData[totalHousesCreated][HouseExterior][0], HouseData[totalHousesCreated][HouseExterior][1], HouseData[totalHousesCreated][HouseExterior][2], 10.0, 0);
 	
 	printf("House ID %i created by %s", HouseData[totalHousesCreated][HouseID], GetName(playerid));
 	

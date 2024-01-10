@@ -18,7 +18,6 @@
 #define VERSION_TEXT	"1.0"
 
 #define DEFAULT_SKIN		60
-#define INVALID_WEAPON_ID	-1
 
 #define MAX_DAMAGES				(MAX_PLAYERS * 10)
 #define MAX_HOUSES				50
@@ -47,7 +46,7 @@ enum PLAYER_DATA
 enum DAMAGE_DATA
 {
 	DamagePlayerID,
-	DamageWeapon,
+	WEAPON:DamageWeapon,
 	Float:DamageAmount,
 	DamageBodyPart
 }

@@ -1,4 +1,4 @@
-CMD:shout(playerid, params[])
+CMD:shout(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -10,9 +10,9 @@ CMD:shout(playerid, params[])
 
 	return true;
 }
-CMD:s(playerid, params[]) return cmd_shout(playerid, params);
+CMD:s(playerid, const params[]) return cmd_shout(playerid, params);
 
-CMD:low(playerid, params[])
+CMD:low(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -24,9 +24,9 @@ CMD:low(playerid, params[])
 
 	return true;
 }
-CMD:l(playerid, params[]) return cmd_low(playerid, params);
+CMD:l(playerid, const params[]) return cmd_low(playerid, params);
 
-CMD:whisper(playerid, params[])
+CMD:whisper(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -51,9 +51,9 @@ CMD:whisper(playerid, params[])
 
 	return true;
 }
-CMD:w(playerid, params[]) return cmd_whisper(playerid, params);
+CMD:w(playerid, const params[]) return cmd_whisper(playerid, params);
 
-CMD:attempt(playerid, params[])
+CMD:attempt(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -79,7 +79,7 @@ CMD:attempt(playerid, params[])
 	return true;
 }
 
-CMD:b(playerid, params[])
+CMD:b(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -93,7 +93,7 @@ CMD:b(playerid, params[])
 	return true;
 }
 
-CMD:pm(playerid, params[])
+CMD:pm(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -114,7 +114,7 @@ CMD:pm(playerid, params[])
 	return true;
 }
 
-CMD:me(playerid, params[])
+CMD:me(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -127,7 +127,7 @@ CMD:me(playerid, params[])
 	return true;
 }
 
-CMD:do(playerid, params[])
+CMD:do(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -140,7 +140,7 @@ CMD:do(playerid, params[])
 	return true;
 }
 
-CMD:ame(playerid, params[])
+CMD:ame(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -155,7 +155,7 @@ CMD:ame(playerid, params[])
 	return true;
 }
 
-CMD:injuries(playerid, params[])
+CMD:injuries(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -174,7 +174,7 @@ CMD:injuries(playerid, params[])
 	return true;
 }
 
-CMD:enter(playerid, params[])
+CMD:enter(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	
@@ -198,7 +198,7 @@ CMD:enter(playerid, params[])
 	return true;
 }
 
-CMD:exit(playerid, params[])
+CMD:exit(playerid, const params[])
 {
 	if(!LoggedIn[playerid]) return true;
 	

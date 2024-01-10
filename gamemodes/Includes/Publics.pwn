@@ -32,7 +32,7 @@ Server:TIMER_SetCameraPos(playerid)
 	return true;
 }
 
-Server:ShowLoginDialog(playerid, error[])
+Server:ShowLoginDialog(playerid, const error[])
 {
 	if(LoggedIn[playerid]) return true;
 	
@@ -45,7 +45,7 @@ Server:ShowLoginDialog(playerid, error[])
 	return true;
 }
 
-Server:ShowRegisterDialog(playerid, error[])
+Server:ShowRegisterDialog(playerid, const error[])
 {
 	if(LoggedIn[playerid]) return true;
 
@@ -136,7 +136,7 @@ Server:DefaultPlayerValues(playerid)
 	return true;
 }
 
-Server:SaveSQLInt(sqlid, table[], row[], value)
+Server:SaveSQLInt(sqlid, const table[], const row[], value)
 {
 	new query[128];
 	mysql_format(sqlConnection, query, sizeof(query), "UPDATE %e SET %e = %i WHERE id = %i", table, row, value, sqlid);
@@ -199,7 +199,7 @@ Server:GetDistanceBetweenPlayers(playerid, id, Float:distance)
 
 Server:SetPlayerSpawn(playerid)
 {
-	SetSpawnInfo(playerid, 0, DEFAULT_SKIN, PlayerData[playerid][pLastPos][0], PlayerData[playerid][pLastPos][1], PlayerData[playerid][pLastPos][2], PlayerData[playerid][pLastPos][3], 0, 0, 0, 0, 0, 0);
+	SetSpawnInfo(playerid, NO_TEAM, DEFAULT_SKIN, PlayerData[playerid][pLastPos][0], PlayerData[playerid][pLastPos][1], PlayerData[playerid][pLastPos][2], PlayerData[playerid][pLastPos][3]);
 	SpawnPlayer(playerid);
 	
 	SetPlayerVirtualWorld(playerid, PlayerData[playerid][pLastWorld]);
@@ -254,7 +254,7 @@ Server:ResetDamageData(playerid)
 	for(new i = 0; i < MAX_DAMAGES; i++) {
 		if(DamageData[i][DamagePlayerID] == playerid) {
 			DamageData[i][DamagePlayerID] = INVALID_PLAYER_ID;
-			DamageData[i][DamageWeapon] = INVALID_WEAPON_ID;
+			DamageData[i][DamageWeapon] = WEAPON:WEAPON_UNKNOWN;
 			DamageData[i][DamageAmount] = 0.0;
 			DamageData[i][DamageBodyPart] = 0;
 		}
@@ -263,7 +263,7 @@ Server:ResetDamageData(playerid)
 	return true;
 }
 
-Server:SaveDamageData(playerid, weaponid, bodypart, Float:amount)
+Server:SaveDamageData(playerid, WEAPON:weaponid, bodypart, Float:amount)
 {
 	totalDamages++;
 	
@@ -329,7 +329,7 @@ Server:CountPlayerHouses(playerid)
 
 Server:ToggleVehicleLock(vehicleId, bool:lockstate)
 {
-	new engine, lights, alarm, doors, bonnet, boot, objective;
+	new bool:engine, bool:lights, bool:alarm, bool:doors, bool:bonnet, bool:boot, bool:objective;
 	GetVehicleParamsEx(vehicleId, engine, lights, alarm, doors, bonnet, boot, objective);
 	SetVehicleParamsEx(vehicleId, engine, lights, alarm, lockstate, bonnet, boot, objective);
 
