@@ -34,6 +34,7 @@ public OnGameModeInit()
 
     LoadServerHouses();
     LoadServerBusinesses();
+    print("[MySQL]: Loading finished.");
 
     return true;
 }

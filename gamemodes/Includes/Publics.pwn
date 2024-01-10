@@ -68,6 +68,8 @@ Server:SQL_OnAccountRegister(playerid)
 
     PlayerData[playerid][pSQLID] = cache_insert_id();
 
+    LoadPlayerData(playerid);
+
     return true;
 }
 

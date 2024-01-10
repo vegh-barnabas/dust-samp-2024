@@ -28,3 +28,30 @@ CMD:giveinjury(playerid, params[])
 
     return true;
 }
+
+CMD:givecash(playerid, params[])
+{
+    if (!LoggedIn[playerid]) return true;
+
+    if (PlayerData[playerid][pAdminLevel] == 0) return SendMessage(playerid, "Unknown command.");
+
+    if (PlayerData[playerid][pAdminLevel] < 3) return SendMessage(playerid, "You re not the required admin level to use this command. (level 3)");
+
+    new id, amount;
+    if (sscanf(params, "ui", id, amount)) return SendMessage(playerid, "/givecash [player id or name] [amount]", MESSAGE_TYPE_USAGE);
+
+    if (!IsPlayerConnected(id)) return SendMessage(playerid, "That player isn't connected.");
+    if (!LoggedIn[id]) return SendMessage(playerid, "This player isn't logged in.");
+
+    GiveCash(id, amount);
+
+    new string[128];
+
+    format(string, sizeof(string), "You gave %s %d$.", NameRP(id), amount);
+    SendMessage(playerid, string, MESSAGE_TYPE_ADMIN);
+
+    format(string, sizeof(string), "%s gave you %d$.", NameRP(playerid), amount);
+    SendMessage(id, string, MESSAGE_TYPE_ADMIN);
+
+    return true;
+}
