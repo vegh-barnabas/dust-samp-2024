@@ -33,47 +33,47 @@
 
 enum PLAYER_DATA
 {
-	pSQLID,
-	pAdminLevel,
-	pMoney,
-	pLevel,
-	pRespect,
-	Float:pLastPos[5],
-	pLastInt,
-	pLastWorld
+    pSQLID,
+    pAdminLevel,
+    pMoney,
+    pLevel,
+    pRespect,
+    Float:pLastPos[5],
+    pLastInt,
+    pLastWorld
 }
 
 enum DAMAGE_DATA
 {
-	DamagePlayerID,
-	WEAPON:DamageWeapon,
-	Float:DamageAmount,
-	DamageBodyPart
+    DamagePlayerID,
+    WEAPON:DamageWeapon,
+    Float:DamageAmount,
+    DamageBodyPart
 }
 
 enum HOUSE_DATA
 {
-	HouseID,
-	HouseOwnerSQL,
-	HouseName[40],
-	Float:HouseExterior[4],
-	Float:HouseInterior[4],
-	HouseInteriorID,
-	HousePrice,
-	HouseLocked,
-	HousePickup,
-	Text3D:HouseLabel
+    HouseID,
+    HouseOwnerSQL,
+    HouseName[40],
+    Float:HouseExterior[4],
+    Float:HouseInterior[4],
+    HouseInteriorID,
+    HousePrice,
+    HouseLocked,
+    HousePickup,
+    Text3D:HouseLabel
 }
 
 enum OWNED_CAR_DATA
 {
-	OwnedCarID,
-	OwnedCarOwner,
-	OwnedCarLock,
-	OwnedCarModel,
-	OwnedCarColor[2],
-	Float:OwnedCarPos[4],
-	OwnedCarPlate[10]
+    OwnedCarID,
+    OwnedCarOwner,
+    OwnedCarLock,
+    OwnedCarModel,
+    OwnedCarColor[2],
+    Float:OwnedCarPos[4],
+    OwnedCarPlate[10]
 }
 
 // Global variables
