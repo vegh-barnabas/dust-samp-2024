@@ -18,6 +18,7 @@
 #include "../gamemodes/Includes/OwnedVehicles.pwn"
 #include "../gamemodes/Includes/Factions.pwn"
 #include "../gamemodes/Includes/FactionVehicles.pwn"
+#include "../gamemodes/Includes/TemporaryVehicles.pwn"
 
 main() {}
 

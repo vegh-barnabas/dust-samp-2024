@@ -29,6 +29,7 @@
 #define MAX_HOUSES				50
 #define MAX_OWNED_VEHICLES		3
 #define MAX_BUSINESSES			40
+#define MAX_TEMP_VEHICLES		30
 
 #define BODY_PART_CHEST			3
 #define BODY_PART_TORSO			4
@@ -117,6 +118,13 @@ enum BUSINESS_DATA
     Text3D:BusinessLabel
 }
 
+enum TEMP_VEHICLE_DATA
+{
+    TempVehicleID,
+    Text3D:TempVehicle3DText
+}
+
+
 // Global variables
 new MySQL:sqlConnection;
 new OneSecondTimer, lastSaveTime = 0;
@@ -131,6 +139,9 @@ new HouseData[MAX_HOUSES][HOUSE_DATA], totalHousesCreated = 0;
 new OwnedCarData[MAX_VEHICLES][OWNED_CAR_DATA];
 
 // Temporary vehicle variables
+new TempVehicleData[MAX_TEMP_VEHICLES][TEMP_VEHICLE_DATA];
+new totalTempVehicles = 0;
+
 // Business variables
 new BusinessData[MAX_BUSINESSES][BUSINESS_DATA];
 new totalBusinessesCreated = 0;
