@@ -32,6 +32,7 @@ public OnGameModeInit()
     OneSecondTimer = SetTimer("TIMER_OneSecondTimer", 1000, true);
 
     LoadServerHouses();
+    LoadServerBusinesses();
 
     return true;
 }

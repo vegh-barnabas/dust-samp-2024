@@ -28,6 +28,7 @@
 #define MAX_DAMAGES				(MAX_PLAYERS * 10)
 #define MAX_HOUSES				50
 #define MAX_OWNED_VEHICLES		3
+#define MAX_BUSINESSES			40
 
 #define BODY_PART_CHEST			3
 #define BODY_PART_TORSO			4
@@ -42,6 +43,21 @@
 #define MESSAGE_TYPE_USAGE      2
 #define MESSAGE_TYPE_ERROR      3
 #define MESSAGE_TYPE_SUCCESS	4
+
+#define BUSINESS_TYPE_SHOP          1
+#define BUSINESS_TYPE_DEALERSHIP    2
+
+#define INTERIOR_GROCERIES_1        17
+#define INTERIOR_GROCERIES_2        10
+#define INTERIOR_CASINO             12
+#define INTERIOR_CLOTHES_BINCO      15
+
+#define PICKUP_INFO             1239
+#define PICKUP_BLUE_HOUSE       1272
+#define PICKUP_GREEN_HOUSE      1273
+#define PICKUP_DOLLAR           1274
+#define PICKUP_SHIRT            1275
+
 enum PLAYER_DATA
 {
     pSQLID,
@@ -87,6 +103,20 @@ enum OWNED_CAR_DATA
     OwnedCarPlate[10]
 }
 
+enum BUSINESS_DATA
+{
+    BusinessID,
+    BusinessOwnerSQL,
+    BusinessName[40],
+    Float:BusinessExterior[4],
+    BusinessInterior,
+    BusinessType,
+    BusinessPrice,
+    BusinessLocked,
+    BusinessPickup,
+    Text3D:BusinessLabel
+}
+
 // Global variables
 new MySQL:sqlConnection;
 new OneSecondTimer, lastSaveTime = 0;
@@ -99,3 +129,8 @@ new HouseData[MAX_HOUSES][HOUSE_DATA], totalHousesCreated = 0;
 
 // Car variables
 new OwnedCarData[MAX_VEHICLES][OWNED_CAR_DATA];
+
+// Temporary vehicle variables
+// Business variables
+new BusinessData[MAX_BUSINESSES][BUSINESS_DATA];
+new totalBusinessesCreated = 0;
