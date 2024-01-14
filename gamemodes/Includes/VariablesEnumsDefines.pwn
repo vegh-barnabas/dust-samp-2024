@@ -122,7 +122,8 @@ enum BUSINESS_DATA
 enum TEMP_VEHICLE_DATA
 {
     TempVehicleID,
-    Text3D:TempVehicle3DText
+    Text3D:TempVehicle3DText,
+    TempVehicleSpawnerSQLID
 }
 
 
