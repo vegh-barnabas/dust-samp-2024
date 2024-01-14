@@ -26,7 +26,6 @@ public OnGameModeInit()
 {
     SetGameModeText("Basic Roleplay "VERSION_TEXT"");
 
-    mysql_log(ERROR | WARNING);
     EnableStuntBonusForAll(false);
     DisableInteriorEnterExits();
 
@@ -151,4 +150,19 @@ public OnVehicleDeath(vehicleid, killerid)
 
     return true;
 }
+
+public OnPlayerUpdate(playerid)
+{
+    if (GetPlayerMoney(playerid) != GetPVarInt(playerid, "currentMoney")) OnPlayerChangeMoney(playerid, GetPVarInt(playerid, "currentMoney"), GetPlayerMoney(playerid));
+
+    return true;
+}
+
+Server:OnPlayerChangeMoney(playerid, oldAmount, newAmount)
+{
+    if (newAmount == PlayerData[playerid][pMoney])
+    {
+        SetPVarInt(playerid, "currentMoney", newAmount);
+    }
+    else Ban(playerid);
 }
