@@ -27,6 +27,10 @@ public OnGameModeInit()
     SetGameModeText("Basic Roleplay "VERSION_TEXT"");
 
     mysql_log(ERROR | WARNING);
+    EnableStuntBonusForAll(false);
+    DisableInteriorEnterExits();
+
+    mysql_log(ALL);
 
     sqlConnection = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
 
@@ -121,6 +125,7 @@ public OnPlayerText(playerid, text[])
     SendLocalMessageEx(playerid, COLOR_WHITE, pText, 7.5);
 
     return false;
+}
 
 public OnVehicleDeath(vehicleid, killerid)
 {
