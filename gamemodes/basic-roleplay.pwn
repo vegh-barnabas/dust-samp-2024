@@ -121,4 +121,29 @@ public OnPlayerText(playerid, text[])
     SendLocalMessageEx(playerid, COLOR_WHITE, pText, 7.5);
 
     return false;
+
+public OnVehicleDeath(vehicleid, killerid)
+{
+    for (new i = 0; i < totalTempVehicles; i++)
+    {
+        if (vehicleid == TempVehicleData[i][TempVehicleID])
+        {
+            Delete3DTextLabel(TempVehicleData[i][TempVehicle3DText]);
+            DestroyVehicle(TempVehicleData[i][TempVehicleID]);
+
+            // switch deleted element with last element so there isn't an empty space in the middle of the array
+            TempVehicleData[i][TempVehicle3DText] = TempVehicleData[totalTempVehicles][TempVehicle3DText];
+            TempVehicleData[i][TempVehicleID] = TempVehicleData[totalTempVehicles][TempVehicleID];
+
+            TempVehicleData[totalTempVehicles][TempVehicle3DText] = INVALID_3DTEXT_ID;
+            TempVehicleData[totalTempVehicles][TempVehicleID] = INVALID_VEHICLE_ID;
+
+            totalTempVehicles--;
+
+            return true;
+        }
+    }
+
+    return true;
+}
 }
