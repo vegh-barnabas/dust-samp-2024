@@ -34,6 +34,17 @@ public OnGameModeInit()
     mysql_log(ALL);
 
     sqlConnection = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+    new errno = mysql_errno(sqlConnection);
+
+    if (sqlConnection == MYSQL_INVALID_HANDLE || errno != 0)
+    {
+        new error[100];
+
+        mysql_error(error, sizeof(error), sqlConnection);
+        printf("[ERROR] #%d '%s'", errno, error);
+
+        SendRconCommand("exit");
+    }
 
     OneSecondTimer = SetTimer("TIMER_OneSecondTimer", 1000, true);
 
