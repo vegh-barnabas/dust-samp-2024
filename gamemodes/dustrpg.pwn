@@ -66,10 +66,15 @@ public OnGameModeExit()
 
 public OnPlayerConnect(playerid)
 {
+    TogglePlayerClock(playerid, false);
+
     DefaultPlayerValues(playerid);
     DoesPlayerExist(playerid);
 
     SetTimerEx("TIMER_SetCameraPos", 1000, false, "i", playerid);
+
+    SetPlayerCurrentTime(playerid);
+    fiveMinuteTimer[playerid] = SetTimerEx("TIMER_FiveMinuteTimer", 5 * 60 * 1000, true, "i", playerid);
 
     return true;
 }
@@ -77,6 +82,8 @@ public OnPlayerConnect(playerid)
 public OnPlayerDisconnect(playerid, reason)
 {
     DefaultPlayerValues(playerid);
+
+    KillTimer(fiveMinuteTimer[playerid]);
 
     return true;
 }

@@ -32,6 +32,23 @@ Server:TIMER_SetCameraPos(playerid)
     return true;
 }
 
+Server:TIMER_FiveMinuteTimer(playerid)
+{
+    SetPlayerCurrentTime(playerid);
+
+    return true;
+}
+
+Server:SetPlayerCurrentTime(playerid)
+{
+    new h, m, s;
+    gettime(h, m, s);
+
+    SetPlayerTime(playerid, h, m);
+
+    return true;
+}
+
 Server:ShowLoginDialog(playerid, const error[])
 {
     if (LoggedIn[playerid]) return true;
