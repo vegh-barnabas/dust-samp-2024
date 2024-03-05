@@ -199,7 +199,13 @@ GetInteriorNameFromId(intId)
             intName = "Invalid";
     }
 
-    // todo: If invalid, log error
+    if (strmatch(intName, "Invalid"))
+    {
+        new errorString[128];
+        format(errorString, sizeof(errorString), "GetInteriorNameFromId error - invalid id! intId: %d", intId);
+
+        Log(LOG_TYPE_UNDEFINED, errorString);
+    }
 
     return intName;
 }
@@ -216,7 +222,13 @@ GetBusinessTypeFromId(typeId)
             typeName = "Invalid";
     }
 
-    // todo: If invalid, log error
+    if (strmatch(typeName, "Invalid"))
+    {
+        new errorString[128];
+        format(errorString, sizeof(errorString), "GetBusinessTypeFromId error - invalid id! typeId: %d", typeId);
+
+        Log(LOG_TYPE_UNDEFINED, errorString);
+    }
 
     return typeName;
 }

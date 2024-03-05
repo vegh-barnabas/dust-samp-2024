@@ -60,6 +60,9 @@
 #define PICKUP_DOLLAR           1274
 #define PICKUP_SHIRT            1275
 
+#define LOG_TYPE_UNDEFINED      0
+#define LOG_TYPE_PURCHASE       1
+
 enum PLAYER_DATA
 {
     pSQLID,
