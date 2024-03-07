@@ -28,7 +28,7 @@ Server:SQL_LoadPlayerOwnedVehicles(playerid)
         cache_get_value_name_int(i, "Color1", color1);
         cache_get_value_name_int(i, "Color2", color2);
 
-        vehicleId = CreateVehicle(modelId, posX, posY, posZ, posA, color1, color2 - 1, false);
+        vehicleId = CreateVehicle(modelId, posX, posY, posZ, posA, color1, color2, -1);
 
         if (vehicleId != INVALID_VEHICLE_ID)
         {

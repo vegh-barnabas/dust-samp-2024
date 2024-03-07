@@ -33,7 +33,7 @@ Server:SpawnTemporaryCar(playerid, modelid)
 
 bool:DespawnTemporaryCar(vehicleid)
 {
-    if(vehicleid == 0 || vehicleid == INVALID_VEHICLE_ID) return false;
+    if (vehicleid == 0 || vehicleid == INVALID_VEHICLE_ID) return false;
 
     for (new i = 0; i < totalTempVehicles; i++)
     {
@@ -90,9 +90,9 @@ CMD:tempcar(playerid, params[])
         new modelid = -1;
         sscanf(params, "{s[64]}D(-1)", modelid);
 
-        if(modelid == -1) return SendMessage(playerid, "/tempcar spawn [model ID]", MESSAGE_TYPE_USAGE);
+        if (modelid == -1) return SendMessage(playerid, "/tempcar spawn [model ID]", MESSAGE_TYPE_USAGE);
 
-        if(modelid < 400 || modelid > 611) return SendMessage(playerid, "The model ID is invalid. (must be between 400 and 611)", MESSAGE_TYPE_ERROR);
+        if (modelid < 400 || modelid > 611) return SendMessage(playerid, "The model ID is invalid. (must be between 400 and 611)", MESSAGE_TYPE_ERROR);
 
         return SpawnTemporaryCar(playerid, modelid);
     }
@@ -101,7 +101,7 @@ CMD:tempcar(playerid, params[])
         new vehicleid = -1;
         sscanf(params, "{s[64]}D(-1)", vehicleid);
 
-        if(vehicleid == -1) return SendMessage(playerid, "/tempcar despawn [vehicle ID]", MESSAGE_TYPE_USAGE);
+        if (vehicleid == -1) return SendMessage(playerid, "/tempcar despawn [vehicle ID]", MESSAGE_TYPE_USAGE);
 
         new bool:success = DespawnTemporaryCar(vehicleid);
 
@@ -121,7 +121,7 @@ CMD:tempcar(playerid, params[])
         new bool:success = DespawnAllTemporaryCars();
 
         if (success) return SendMessage(playerid, "All temporary vehicles despawned.", MESSAGE_TYPE_SUCCESS);
-        return SendMessage(playerid, "Couldn't despawn temporary vehicles. (Notify the scripter if you see this)", MESSAGE_TYPE_ERROR);
+        return SendMessage(playerid, "Couldn't despawn temporary vehicles. (Notify the scripter if you see this)", MESSAGE_TYPE_ERROR); // TODO log error
     }
 
     return true;
