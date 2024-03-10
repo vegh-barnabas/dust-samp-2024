@@ -55,6 +55,8 @@
 #define INTERIOR_CASINO             12
 #define INTERIOR_CLOTHES_BINCO      15
 
+#define MAX_BUSINESS_INTERIORS      5 // don't forget to resize this if the list gets modified
+
 #define PICKUP_INFO             1239
 #define PICKUP_BLUE_HOUSE       1272
 #define PICKUP_GREEN_HOUSE      1273
@@ -63,6 +65,16 @@
 
 #define LOG_TYPE_UNDEFINED      0
 #define LOG_TYPE_PURCHASE       1
+#define WEATHER_TYPE_UNKNOWN        0
+#define WEATHER_TYPE_SUNNY          1
+#define WEATHER_TYPE_EXTRASUNNY     2
+#define WEATHER_TYPE_CLOUDY         3
+#define WEATHER_TYPE_RAINY          4
+#define WEATHER_TYPE_FOGGY          5
+#define WEATHER_TYPE_SANDSTORM      6
+
+
+// AddPlayerClass(60, -28.3890, -89.9544, 1003.5469, 182.2708, 0, 0, 0, 0, 0, 0); // /buy location 24/7-3
 
 enum PLAYER_DATA
 {
@@ -137,6 +149,8 @@ new OneSecondTimer, lastSaveTime = 0;
 
 // Player variables
 new bool:LoggedIn[MAX_PLAYERS], PlayerData[MAX_PLAYERS][PLAYER_DATA], DamageData[MAX_DAMAGES][DAMAGE_DATA], totalDamages = 0;
+
+new fiveMinuteTimer[MAX_PLAYERS];
 
 // House variables
 new HouseData[MAX_HOUSES][HOUSE_DATA], totalHousesCreated = 0;

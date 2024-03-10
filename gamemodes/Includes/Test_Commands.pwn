@@ -55,3 +55,20 @@ CMD:givecash(playerid, params[])
 
     return true;
 }
+
+// todo make this into an admin cmd - first of all make admincommands.pwn file
+CMD:tp(playerid, params[])
+{
+    new Float:x, Float:y, Float:z;
+
+    new int = GetPlayerInterior(playerid);
+    new vw = GetPlayerVirtualWorld(playerid);
+
+    if (sscanf(params, "fffII", x, y, z, int, vw)) return SendMessage(playerid, "/tp [x] [y] [z] [intID - optional] [VW - optional]", MESSAGE_TYPE_USAGE);
+
+    SetPlayerPos(playerid, x, y, z);
+    SetPlayerInterior(playerid, int);
+    SetPlayerVirtualWorld(playerid, vw);
+
+    return true;
+}

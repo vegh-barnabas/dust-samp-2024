@@ -181,7 +181,7 @@ CMD:enter(playerid, const params[])
 
     if (IsPlayerInAnyVehicle(playerid)) return true;
 
-    for (new i = 0; i < MAX_HOUSES; i++)
+    for (new i = 0; i < totalHousesCreated; i++)
     {
         if (HouseData[i][HouseID] != 0)
         {
@@ -194,6 +194,26 @@ CMD:enter(playerid, const params[])
 
                     SetPlayerInterior(playerid, HouseData[i][HouseInteriorID]);
                     SetPlayerVirtualWorld(playerid, HouseData[i][HouseID]);
+                }
+                else return SendClientMessage(playerid, COLOR_WHITE, "The door is locked.");
+            }
+        }
+    }
+
+    for (new i = 0; i < totalBusinessesCreated; i++)
+    {
+        if (BusinessData[i][BusinessID] != 0)
+        {
+            if (IsPlayerInRangeOfPoint(playerid, 5.0, BusinessData[i][BusinessExterior][0], BusinessData[i][BusinessExterior][1], BusinessData[i][BusinessExterior][2]))
+            {
+                if (BusinessData[i][BusinessLocked] == 0)
+                {
+                    // todo refact this because this is terrible
+                    SetPlayerPos(playerid, -31.0460, -91.5511, 1003.5469);
+                    SetPlayerFacingAngle(playerid, 0);
+
+                    SetPlayerInterior(playerid, 18);
+                    SetPlayerVirtualWorld(playerid, BusinessData[i][BusinessID]);
                 }
                 else return SendClientMessage(playerid, COLOR_WHITE, "The door is locked.");
             }
@@ -213,6 +233,7 @@ CMD:exit(playerid, const params[])
     {
         if (HouseData[i][HouseID] != 0 && GetPlayerVirtualWorld(playerid) == HouseData[i][HouseID])
         {
+            // todo is 5.0 needed here? it could be less
             if (IsPlayerInRangeOfPoint(playerid, 5.0, HouseData[i][HouseInterior][0], HouseData[i][HouseInterior][1], HouseData[i][HouseInterior][2]))
             {
                 if (HouseData[i][HouseLocked] == 0)
@@ -228,5 +249,29 @@ CMD:exit(playerid, const params[])
         }
     }
 
+    for (new i = 0; i < totalBusinessesCreated; i++)
+    {
+        // todo maybe the playerdata should be compared here
+        if (BusinessData[i][BusinessID] != 0 && GetPlayerVirtualWorld(playerid) == BusinessData[i][BusinessID])
+        {
+            if (IsPlayerInRangeOfPoint(playerid, 1.0, -31.0460, -91.5511, 1003.5469))
+            {
+                if (BusinessData[i][BusinessLocked] == 0)
+                {
+                    // todo refact this because this is terrible
+                    SetPlayerPos(playerid, BusinessData[i][BusinessExterior][0], BusinessData[i][BusinessExterior][1], BusinessData[i][BusinessExterior][2]);
+                    SetPlayerFacingAngle(playerid, 0);
+
+                    SetPlayerInterior(playerid, 0);
+                    SetPlayerVirtualWorld(playerid, 0);
+                }
+                else return SendClientMessage(playerid, COLOR_WHITE, "The door is locked.");
+            }
+        }
+    }
+
     return true;
 }
+
+// todo on lock tell player that someone is in the interior
+// todo make custom interior set function to change the playerdata variable and VW too

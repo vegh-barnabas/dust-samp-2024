@@ -58,7 +58,7 @@ Server:ShowLoginDialog(playerid, const error[])
         SendClientMessage(playerid, COLOR_WHITE, error);
     }
 
-    ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "Tutorial Server - Login", "Please enter your password below so you can login.", "Login", "Quit");
+    ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "dust RPG - Login", "Please enter your password below so you can login.", "Login", "Quit");
 
     return true;
 }
@@ -72,7 +72,7 @@ Server:ShowRegisterDialog(playerid, const error[])
         SendClientMessage(playerid, COLOR_WHITE, error);
     }
 
-    ShowPlayerDialog(playerid, DIALOG_REGISTER, DIALOG_STYLE_PASSWORD, "Tutorial Server - Register", "Please enter a password below so you can register your account with us", "Register", "Quit");
+    ShowPlayerDialog(playerid, DIALOG_REGISTER, DIALOG_STYLE_PASSWORD, "dust RPG - Register", "Please enter a password below so you can register your account with us", "Register", "Quit");
 
     return true;
 }

@@ -43,11 +43,11 @@ bool:DespawnTemporaryCar(vehicleid)
             DestroyVehicle(TempVehicleData[i][TempVehicleID]);
 
             // switch deleted element with last element so there isn't an empty space in the middle of the array
-            TempVehicleData[i][TempVehicle3DText] = TempVehicleData[totalTempVehicles][TempVehicle3DText];
-            TempVehicleData[i][TempVehicleID] = TempVehicleData[totalTempVehicles][TempVehicleID];
+            TempVehicleData[i][TempVehicle3DText] = TempVehicleData[totalTempVehicles - 1][TempVehicle3DText];
+            TempVehicleData[i][TempVehicleID] = TempVehicleData[totalTempVehicles - 1][TempVehicleID];
 
-            TempVehicleData[totalTempVehicles][TempVehicle3DText] = INVALID_3DTEXT_ID;
-            TempVehicleData[totalTempVehicles][TempVehicleID] = INVALID_VEHICLE_ID;
+            TempVehicleData[totalTempVehicles - 1][TempVehicle3DText] = INVALID_3DTEXT_ID;
+            TempVehicleData[totalTempVehicles - 1][TempVehicleID] = INVALID_VEHICLE_ID;
 
             totalTempVehicles--;
 
@@ -74,6 +74,18 @@ bool:DespawnAllTemporaryCars()
     return true;
 }
 
+CMD:carspawn(playerid, params[])
+{
+    new modelid;
+    if (sscanf(params, "k<vehicle>", modelid)) return SendClientMessage(playerid, -1, "Usage: /carspawn [Model ID or name]");
+
+    if (modelid < 400 || modelid > 611) return SendClientMessage(playerid, -1, "The model ID is invalid. (must be between 400 and 611)");
+
+    SpawnTemporaryCar(playerid, modelid);
+
+    return true;
+}
+
 CMD:tempcar(playerid, params[])
 {
     if (!LoggedIn[playerid]) return true;
@@ -87,8 +99,9 @@ CMD:tempcar(playerid, params[])
 
     if (strmatch(option, "spawn"))
     {
-        new modelid = -1;
-        sscanf(params, "{s[64]}D(-1)", modelid);
+        // todo implement this everywhere
+        new modelid;
+        if (sscanf(params, "{s[64]}k<vehicle>", modelid)) return SendMessage(playerid, "/tempcar spawn [model ID]", MESSAGE_TYPE_USAGE);
 
         if (modelid == -1) return SendMessage(playerid, "/tempcar spawn [model ID]", MESSAGE_TYPE_USAGE);
 

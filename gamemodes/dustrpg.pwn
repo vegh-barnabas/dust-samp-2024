@@ -21,11 +21,14 @@
 #include "../gamemodes/Includes/Factions.pwn"
 #include "../gamemodes/Includes/FactionVehicles.pwn"
 #include "../gamemodes/Includes/TemporaryVehicles.pwn"
+#include "../gamemodes/Includes/Weather.pwn"
 
 main() {}
 
 public OnGameModeInit()
 {
+    //todo change allowed 0.3.7 clients to false
+
     SetGameModeText("Basic Roleplay "VERSION_TEXT"");
 
     EnableStuntBonusForAll(false);
@@ -51,6 +54,9 @@ public OnGameModeInit()
     LoadServerHouses();
     LoadServerBusinesses();
     print("[MySQL]: Loading finished.");
+
+    // todo last weather to mysql and load here
+    SetWeather(0);
 
     return true;
 }
