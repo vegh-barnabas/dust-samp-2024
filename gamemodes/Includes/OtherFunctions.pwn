@@ -143,8 +143,35 @@ SendMessage(playerid, const message[], messageType = MESSAGE_TYPE_SERVER)
     }
     else
     {
-        // todo log error
+        new errorString[256];
+        format(errorString, sizeof(errorString), "SendMessage error - type: %d | pid: %d | msg: %s", messageType, playerid, message);
+
+        Log(LOG_TYPE_UNDEFINED, errorString);
     }
+
+    return true;
+}
+
+Log(logType = LOG_TYPE_UNDEFINED, const message[])
+{
+    new fileName[20] = EOS;
+
+    switch (logType)
+    {
+        case LOG_TYPE_UNDEFINED: fileName = "logs/undef.txt";
+        case LOG_TYPE_PURCHASE: fileName = "logs/purchase.txt";
+        default:
+            fileName = "logs/undef.txt";
+    }
+
+    new File:handle = fopen(fileName, io_append);
+
+    if (!handle) printf("[Log error]: Couldn't open file %s!", fileName);
+
+    fwrite(handle, message);
+    fwrite(handle, "\n");
+
+    fclose(handle);
 
     return true;
 }

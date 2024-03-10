@@ -171,6 +171,22 @@ public OnVehicleDeath(vehicleid, killerid)
     return true;
 }
 
+public OnPlayerExitVehicle(playerid, vehicleid)
+{
+    if (GetPVarInt(playerid, "creatingRentableVehicle") == 1)
+    {
+        new str[64];
+        format(str, sizeof(str), "The rentable car was created!");
+        SendMessage(playerid, str, MESSAGE_TYPE_SUCCESS);
+
+        // TODO implement vehicle creation
+
+        SetPVarInt(playerid, "creatingRentableVehicle", 0);
+    }
+
+    return true;
+}
+
 public OnPlayerUpdate(playerid)
 {
     if (GetPlayerMoney(playerid) != GetPVarInt(playerid, "currentMoney")) OnPlayerChangeMoney(playerid, GetPVarInt(playerid, "currentMoney"), GetPlayerMoney(playerid));

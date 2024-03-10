@@ -1,6 +1,8 @@
 gamemodes/*.amx
 gamemodes/*.xml
 
-logs
+omp_minidump.dmp
 
+scriptfiles/logs
+logs
 log.txt

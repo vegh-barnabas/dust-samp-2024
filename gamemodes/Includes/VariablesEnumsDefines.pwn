@@ -31,6 +31,7 @@
 #define MAX_OWNED_VEHICLES		3
 #define MAX_BUSINESSES			40
 #define MAX_TEMP_VEHICLES		30
+#define MAX_RENTABLE_VEHICLES   20
 
 #define BODY_PART_CHEST			3
 #define BODY_PART_TORSO			4
@@ -59,6 +60,9 @@
 #define PICKUP_GREEN_HOUSE      1273
 #define PICKUP_DOLLAR           1274
 #define PICKUP_SHIRT            1275
+
+#define LOG_TYPE_UNDEFINED      0
+#define LOG_TYPE_PURCHASE       1
 
 enum PLAYER_DATA
 {
