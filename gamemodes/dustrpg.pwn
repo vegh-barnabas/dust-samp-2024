@@ -23,6 +23,8 @@
 #include "../gamemodes/Includes/TemporaryVehicles.pwn"
 #include "../gamemodes/Includes/Weather.pwn"
 
+#include "../gamemodes/Includes/Phone.pwn"
+
 main() {}
 
 public OnGameModeInit()
@@ -81,6 +83,9 @@ public OnPlayerConnect(playerid)
 
     SetPlayerCurrentTime(playerid);
     fiveMinuteTimer[playerid] = SetTimerEx("TIMER_FiveMinuteTimer", 5 * 60 * 1000, true, "i", playerid);
+
+    CreatePhoneTextDraws(playerid);
+    SetDefaultPhoneValues(playerid);
 
     return true;
 }
