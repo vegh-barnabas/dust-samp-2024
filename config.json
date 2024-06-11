@@ -85,7 +85,7 @@
     "rcon": {
         "allow_teleport": false,
         "enable": false,
-        "password": "something3ls3"
+        "password": "changed"
     },
     "sleep": 5.0,
     "use_dyn_ticks": true,

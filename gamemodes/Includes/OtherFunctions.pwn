@@ -76,6 +76,7 @@ GetBoneDamaged(bodypart)
     return bodypartR;
 }
 
+// TODO make admin list cmd
 ReturnAdminRank(rankid)
 {
     new string[20] = EOS;
