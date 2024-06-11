@@ -1,8 +1,8 @@
 gamemodes/*.amx
 gamemodes/*.xml
 
-filterscripts/*.amx
-filterscripts/*.xml
+filterscripts/*/*.amx
+filterscripts/*/*.xml
 
 omp_minidump.dmp
 
