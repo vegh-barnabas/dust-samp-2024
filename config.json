@@ -80,7 +80,7 @@
         "main_scripts": [
             "dustrpg 1"
         ],
-        "side_scripts": []
+        "side_scripts": ["filterscripts/phone.amx"]
     },
     "rcon": {
         "allow_teleport": false,
