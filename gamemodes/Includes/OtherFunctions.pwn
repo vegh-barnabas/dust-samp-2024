@@ -175,3 +175,28 @@ Log(logType = LOG_TYPE_UNDEFINED, const message[])
 
     return true;
 }
+
+GetCurrentDay()
+{
+    new currentDay = DAY_UNKNOWN;
+
+    new year, month, day, days;
+    days = getdate(year, month, day);
+    printf("Days since the start of the year: %d", days);
+
+    // 2024.01.01 was a Monday
+    new daysFromMonday = (days - 1) % 7;
+
+    switch (daysFromMonday)
+    {
+        case 0: currentDay = DAY_MONDAY;
+        case 1: currentDay = DAY_TUESDAY;
+        case 2: currentDay = DAY_WEDNESDAY;
+        case 3: currentDay = DAY_THURSDAY;
+        case 4: currentDay = DAY_FRIDAY;
+        case 6: currentDay = DAY_SATURDAY;
+        case 7: currentDay = DAY_SUNDAY;
+    }
+
+    return currentDay;
+}

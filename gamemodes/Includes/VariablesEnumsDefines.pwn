@@ -73,6 +73,14 @@
 #define WEATHER_TYPE_FOGGY          5
 #define WEATHER_TYPE_SANDSTORM      6
 
+#define DAY_UNKNOWN     0
+#define DAY_MONDAY      1
+#define DAY_TUESDAY     2
+#define DAY_WEDNESDAY   3
+#define DAY_THURSDAY    4
+#define DAY_FRIDAY      5
+#define DAY_SATURDAY    6
+#define DAY_SUNDAY      7
 
 // AddPlayerClass(60, -28.3890, -89.9544, 1003.5469, 182.2708, 0, 0, 0, 0, 0, 0); // /buy location 24/7-3
 
