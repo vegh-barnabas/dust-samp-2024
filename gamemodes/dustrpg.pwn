@@ -23,8 +23,6 @@
 #include "../gamemodes/Includes/TemporaryVehicles.pwn"
 #include "../gamemodes/Includes/Weather.pwn"
 
-#include "../gamemodes/Includes/Phone.pwn"
-
 main() {}
 
 public OnGameModeInit()
