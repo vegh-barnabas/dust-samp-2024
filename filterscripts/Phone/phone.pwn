@@ -11,6 +11,11 @@
 #include <izcmd> // latest https://github.com/vegh-barnabas/hungarian-accents-I-ZCMD
 #include <a_mysql> // R-41-4 https://github.com/pBlueG/SA-MP-MySQL/releases/tag/R41-4
 
+#include "../gamemodes/Includes/VariablesEnumsDefines.pwn" // Days
+#include "../gamemodes/Includes/OtherFunctions.pwn" // GetCurentDay
+
+#include "../gamemodes/Includes/Anticheat.pwn" // OnPlayerChangeMoney
+
 #include "../filterscripts/Phone/Includes/Phone_Textdraws.pwn"
 
 // key defines
@@ -56,6 +61,9 @@ public OnFilterScriptExit()
 
 public OnPlayerConnect(playerid)
 {
+    CreatePhoneTextDraws(playerid);
+    SetDefaultPhoneValues(playerid);
+
     isPhoneShowing[playerid] = false;
 
     return true;
@@ -170,6 +178,62 @@ public OnPlayerUpdate(playerid)
 
     return true;
 }
+
+
+
+Server:SetPlayerPhoneDay(playerid)
+{
+    new currentDayTextdrawText[4] = "-";
+    new currentDay = GetCurrentDay();
+    switch (currentDay)
+    {
+        case DAY_MONDAY: currentDayTextdrawText = "MON";
+        case DAY_TUESDAY: currentDayTextdrawText = "TUE";
+        case DAY_WEDNESDAY: currentDayTextdrawText = "WEN";
+        case DAY_THURSDAY: currentDayTextdrawText = "THU";
+        case DAY_FRIDAY: currentDayTextdrawText = "FRI";
+        case DAY_SATURDAY: currentDayTextdrawText = "SAT";
+        case DAY_SUNDAY: currentDayTextdrawText = "SUN";
+    }
+
+    PlayerTextDrawSetString(playerid, topLineDayIndicator[playerid], currentDayTextdrawText);
+
+    return true;
+}
+
+Server:SetPlayerPhoneTime(playerid)
+{
+    new hour, minute;
+    GetPlayerTime(playerid, hour, minute);
+
+    new hourStr[4];
+    new minuteStr[4];
+
+    if (hour < 10)
+    {
+        format(hourStr, sizeof(hourStr), "0%d", hour);
+    }
+    else
+    {
+        format(hourStr, sizeof(hourStr), "%d", hour);
+    }
+
+    if (minute < 10)
+    {
+        format(minuteStr, sizeof(minuteStr), "0%d", minute);
+    }
+    else
+    {
+        format(minuteStr, sizeof(minuteStr), "%d", minute);
+    }
+
+    new string[12];
+    format(string, sizeof(string), "%s:%s", hourStr, minuteStr);
+    PlayerTextDrawSetString(playerid, topLineHourIndicator[playerid], string);
+
+    return true;
+}
+
 CMD:phone(playerid, params[])
 {
     if (!isPhoneShowing[playerid])
@@ -530,59 +594,6 @@ Server:TIMER_SetPlayerClockTimer(playerid)
     SetPlayerPhoneTime(playerid);
 
     SendClientMessage(playerid, -1, "time changed"); // todo not working properly
-
-    return true;
-}
-
-Server:SetPlayerPhoneDay(playerid)
-{
-    new currentDayTextdrawText[4] = "-";
-    new currentDay = GetCurrentDay();
-    switch (currentDay)
-    {
-        case DAY_MONDAY: currentDayTextdrawText = "MON";
-        case DAY_TUESDAY: currentDayTextdrawText = "TUE";
-        case DAY_WEDNESDAY: currentDayTextdrawText = "WEN";
-        case DAY_THURSDAY: currentDayTextdrawText = "THU";
-        case DAY_FRIDAY: currentDayTextdrawText = "FRI";
-        case DAY_SATURDAY: currentDayTextdrawText = "SAT";
-        case DAY_SUNDAY: currentDayTextdrawText = "SUN";
-    }
-
-    PlayerTextDrawSetString(playerid, topLineDayIndicator[playerid], currentDayTextdrawText);
-
-    return true;
-}
-
-Server:SetPlayerPhoneTime(playerid)
-{
-    new hour, minute;
-    GetPlayerTime(playerid, hour, minute);
-
-    new hourStr[4];
-    new minuteStr[4];
-
-    if (hour < 10)
-    {
-        format(hourStr, sizeof(hourStr), "0%d", hour);
-    }
-    else
-    {
-        format(hourStr, sizeof(hourStr), "%d", hour);
-    }
-
-    if (minute < 10)
-    {
-        format(minuteStr, sizeof(minuteStr), "0%d", minute);
-    }
-    else
-    {
-        format(minuteStr, sizeof(minuteStr), "%d", minute);
-    }
-
-    new string[12];
-    format(string, sizeof(string), "%s:%s", hourStr, minuteStr);
-    PlayerTextDrawSetString(playerid, topLineHourIndicator[playerid], string);
 
     return true;
 }

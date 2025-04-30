@@ -11,6 +11,8 @@
 #include "../gamemodes/Includes/OtherFunctions.pwn"
 #include "../gamemodes/Includes/Publics.pwn"
 
+#include "../gamemodes/Includes/Anticheat.pwn"
+
 #include "../gamemodes/Includes/General_Commands.pwn"
 #include "../gamemodes/Includes/Account_Commands.pwn"
 #include "../gamemodes/Includes/Test_Commands.pwn"
@@ -81,9 +83,6 @@ public OnPlayerConnect(playerid)
 
     SetPlayerCurrentTime(playerid);
     fiveMinuteTimer[playerid] = SetTimerEx("TIMER_FiveMinuteTimer", 5 * 60 * 1000, true, "i", playerid);
-
-    CreatePhoneTextDraws(playerid);
-    SetDefaultPhoneValues(playerid);
 
     return true;
 }
@@ -201,14 +200,4 @@ public OnPlayerUpdate(playerid)
     if (GetPlayerMoney(playerid) != GetPVarInt(playerid, "currentMoney")) OnPlayerChangeMoney(playerid, GetPVarInt(playerid, "currentMoney"), GetPlayerMoney(playerid));
 
     return true;
-}
-
-// TODO put this on anticheat or something?
-Server:OnPlayerChangeMoney(playerid, oldAmount, newAmount)
-{
-    if (newAmount == PlayerData[playerid][pMoney])
-    {
-        SetPVarInt(playerid, "currentMoney", newAmount);
-    }
-    else Ban(playerid); // TODO refact this to a reason ban system
 }
