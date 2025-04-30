@@ -11,12 +11,12 @@
 #include <izcmd> // latest https://github.com/vegh-barnabas/hungarian-accents-I-ZCMD
 #include <a_mysql> // R-41-4 https://github.com/pBlueG/SA-MP-MySQL/releases/tag/R41-4
 
-#include "../gamemodes/Includes/VariablesEnumsDefines.pwn" // Days
-#include "../gamemodes/Includes/OtherFunctions.pwn" // GetCurentDay
+#include "../../gamemodes/Includes/VariablesEnumsDefines.pwn" // Days
+#include "../../gamemodes/Includes/OtherFunctions.pwn" // GetCurentDay
 
-#include "../gamemodes/Includes/Anticheat.pwn" // OnPlayerChangeMoney
+#include "../../gamemodes/Includes/Anticheat.pwn" // OnPlayerChangeMoney
 
-#include "../filterscripts/Phone/Includes/Phone_Textdraws.pwn"
+#include "../../filterscripts/Phone/Includes/Phone_Textdraws.pwn"
 
 // key defines
 #define RELEASED(%0) (((newkeys & (%0)) != (%0)) && ((oldkeys & (%0)) == (%0)))

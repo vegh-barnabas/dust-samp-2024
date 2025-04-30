@@ -1,9 +1,9 @@
 #define Server:%0(%1) forward %0(%1); public %0(%1)
 
 #define MYSQL_HOST "localhost"
-#define MYSQL_USER "basic-rp"
-#define MYSQL_DATABASE "basic-rp"
-#define MYSQL_PASSWORD "basicRoleplay"
+#define MYSQL_USER "dust"
+#define MYSQL_DATABASE "dust"
+#define MYSQL_PASSWORD "dust"
 
 #define COLOR_WHITE     0xFFFFFF00
 #define COLOR_RED       0xFF000000
